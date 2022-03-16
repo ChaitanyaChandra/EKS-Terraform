@@ -1,12 +1,12 @@
 locals {
-  env          = trimprefix("${var.TFC_WORKSPACE_NAME}", "eksapp-")
-  Environment  = local.env == "dr" || local.env == "prod" ? "prod" : "nonpord"
-  region       = local.env == "dr" || local.env == "prod" ? "us-west-2" : "us-east-1"
+  env         = trimprefix("${var.TFC_WORKSPACE_NAME}", "eksapp-")
+  Environment = local.env == "dr" || local.env == "prod" ? "prod" : "nonpord"
+  region      = local.env == "dr" || local.env == "prod" ? "us-west-2" : "us-east-1"
   tags = {
-    "Environment"     = local.Environment
-    "region"          = local.region
-    "Service"         = "eksapp"
-    "SupportGroup"    = "Managed Services L2"
+    "Environment"  = local.Environment
+    "region"       = local.region
+    "Service"      = "eksapp"
+    "SupportGroup" = "Managed Services L2"
   }
   env_tag = {
     "appenv" = local.env
@@ -16,7 +16,7 @@ locals {
 variable "TFC_WORKSPACE_NAME" {
   sensitive   = true
   type        = string
-  default = "eksapp-dev"
+  default     = "eksapp-dev"
   description = "WORKSPACE NAME imported from tfe"
 }
 
@@ -26,7 +26,7 @@ variable "cluster_name" {
 }
 
 variable "k8s_version" {
-  type = string
+  type    = string
   default = "1.21"
 }
 
